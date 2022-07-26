@@ -2,44 +2,19 @@
 from dash import Dash, dcc, html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
-from datetime import date, datetime
-from jupyter_dash import JupyterDash
 
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
 import numpy as np
 import pandas as pd
-from pandas_profiling import ProfileReport
-import plotly.express as px
-import plotly.figure_factory as ff
 import plotly.graph_objs as go
-from pprint import pprint
-import seaborn as sns
 from sklearn.compose import (
     make_column_selector,
     make_column_transformer,
-    ColumnTransformer,
 )
-from sklearn.dummy import DummyRegressor
 from sklearn.ensemble import (
-    HistGradientBoostingRegressor,
     RandomForestRegressor,
-    GradientBoostingRegressor,
-)
-from sklearn.inspection import permutation_importance
-from sklearn.linear_model import Ridge, RidgeCV
-from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
-from sklearn.model_selection import (
-    cross_validate,
-    RandomizedSearchCV,
-    train_test_split,
-    ShuffleSplit,
-    KFold,
 )
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OrdinalEncoder, OneHotEncoder, StandardScaler
-from sklearn.utils import estimator_html_repr
-from scipy.stats import loguniform
+from sklearn.preprocessing import OrdinalEncoder
 
 # %%
 car_price_df = pd.read_csv(
@@ -432,9 +407,12 @@ plot_row = dbc.Container(
 
 # %%
 fontawesome_stylesheet = "https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-app = JupyterDash(
+app = Dash(
     __name__, external_stylesheets=[dbc.themes.BOOTSTRAP, fontawesome_stylesheet]
 )
+
+# to deploy using WSGI server
+server = app.server
 # app tittle for web browser
 app.title = "BMW Regression Explorer"
 
@@ -734,4 +712,5 @@ def update_price_mile(
 
 
 # %%
-app.run_server(mode="external")
+if __name__ == "__main__":
+    app.run_server(debug=True)
