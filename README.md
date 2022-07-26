@@ -2,3 +2,5 @@
 BMW car pricing dataset
 
 Web Application deployed at: https://data-challenge-dash.herokuapp.com/
+
+Check ipynb in root directory
