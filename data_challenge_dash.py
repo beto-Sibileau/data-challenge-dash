@@ -434,6 +434,7 @@ title_row = dbc.Container(
                             style={
                                 "fontWeight": "bold",
                                 "textAlign": "center",
+                                "marginLeft": "-150px",
                                 "paddingTop": "25px",
                                 "color": "white",
                                 "fontSize": "32px",
