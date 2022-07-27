@@ -430,7 +430,7 @@ title_row = dbc.Container(
                 html.Div(
                     [
                         html.H6(
-                            "BMW Regression Explorer",
+                            "BMW Pricing Challenge - Regression Explorer on selected features",
                             style={
                                 "fontWeight": "bold",
                                 "textAlign": "center",
