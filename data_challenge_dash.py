@@ -189,7 +189,7 @@ input_row = dbc.Container(
                             style={
                                 "fontWeight": "bold",
                                 "fontSize": "18px",
-                                "marginBottom": "20px",
+                                "marginBottom": "10px",
                                 "textAlign": "center",
                                 "color": "DeepSkyBlue",
                             },
@@ -207,7 +207,7 @@ input_row = dbc.Container(
                             style={
                                 "fontWeight": "bold",
                                 "fontSize": "18px",
-                                "marginBottom": "20px",
+                                "marginBottom": "10px",
                                 "textAlign": "center",
                                 "color": "DeepSkyBlue",
                             },
@@ -430,12 +430,16 @@ title_row = dbc.Container(
                 html.Div(
                     [
                         html.H6(
-                            "BMW Pricing Challenge - Regression Explorer on selected features",
+                            children=[
+                                "BMW Pricing Challenge",
+                                html.Br(),
+                                "Regression Explorer on selected features",
+                            ],
                             style={
                                 "fontWeight": "bold",
                                 "textAlign": "center",
-                                "marginLeft": "-150px",
-                                "paddingTop": "25px",
+                                "marginLeft": "-80px",
+                                "paddingTop": "30px",
                                 "color": "white",
                                 "fontSize": "32px",
                             },
@@ -613,20 +617,39 @@ def update_price_time(
     fig.update_traces(
         contours_z=dict(
             show=True, usecolormap=True, highlightcolor="limegreen", project_z=True
-        )
+        ),
+        colorbar=dict(lenmode="fraction", len=0.75, y=0.4),
     )
     fig.update_layout(
-        title="Car Selling Price Predictions by Year and Selling Month",
+        title={
+            "text": "Car Selling Price Predictions by Year and Selling Month",
+            "y": 0.9,
+            "x": 0.5,
+            "xanchor": "center",
+            "yanchor": "top",
+        },
         scene=dict(
-            xaxis_title="Selling Month",
-            yaxis_title="Registration Year",
-            zaxis_title="Price",
+            yaxis=dict(
+                title=dict(text="Registration Year", font=dict(size=11)),
+                tickfont=dict(size=11),
+                tickangle=0,
+            ),
+            xaxis=dict(
+                title=dict(text="Selling Month", font=dict(size=11)),
+                tickfont=dict(size=11),
+                tickangle=0,
+            ),
+            zaxis=dict(
+                title=dict(text="Price", font=dict(size=11)),
+                tickfont=dict(size=11),
+                tickangle=0,
+            ),
         ),
-        autosize=False,
-        # scene_camera_eye=dict(x=1.87, y=0.88, z=-0.64),
-        width=800,
-        height=800,
-        margin=dict(l=65, r=50, b=65, t=65),
+        # autosize=False,
+        scene_camera_eye=dict(x=1.5, y=-1.5, z=0.3),
+        width=600,
+        height=600,
+        margin=dict(l=65, r=50, b=90, t=50),
     )
 
     return fig
@@ -693,20 +716,39 @@ def update_price_mile(
     fig.update_traces(
         contours_z=dict(
             show=True, usecolormap=True, highlightcolor="limegreen", project_z=True
-        )
+        ),
+        colorbar=dict(lenmode="fraction", len=0.75, y=0.4),
     )
     fig.update_layout(
-        title="Car Selling Price Predictions by Year and Mileage",
+        title={
+            "text": "Car Selling Price Predictions by Year and Mileage",
+            "y": 0.9,
+            "x": 0.5,
+            "xanchor": "center",
+            "yanchor": "top",
+        },
         scene=dict(
-            xaxis_title="Mileage",
-            yaxis_title="Registration Year",
-            zaxis_title="Price",
+            yaxis=dict(
+                title=dict(text="Registration Year", font=dict(size=11)),
+                tickfont=dict(size=11),
+                tickangle=0,
+            ),
+            xaxis=dict(
+                title=dict(text="Mileage", font=dict(size=11)),
+                tickfont=dict(size=11),
+                tickangle=0,
+            ),
+            zaxis=dict(
+                title=dict(text="Price", font=dict(size=11)),
+                tickfont=dict(size=11),
+                tickangle=0,
+            ),
         ),
-        autosize=False,
-        # scene_camera_eye=dict(x=1.87, y=0.88, z=-0.64),
-        width=800,
-        height=800,
-        margin=dict(l=65, r=50, b=65, t=65),
+        # autosize=False,
+        scene_camera_eye=dict(x=1.5, y=-1.5, z=0.3),
+        width=600,
+        height=600,
+        margin=dict(l=65, r=50, b=90, t=50),
     )
 
     return fig
